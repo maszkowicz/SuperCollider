@@ -46,10 +46,8 @@ p.stop;
 
 //Let's grab the Data
 
-//PC STYLE filepath
-~mycsv=CSVFileReader.readInterpret("Users/Szkomaga/Documents/SuperCollider/Workshop/sonification.csv",true,true);
 //MAC STYLE filepath
-~mycsv=CSVFileReader.readInterpret("Users/Szkomaga/Desktop/SonificationTalk2020/Workshop/sonification.csv",true,true);
+~mycsv=CSVFileReader.readInterpret("Users/Szkomaga/Desktop/SonificationTalk2020/Workshop/3_sonification_data.csv",true,true);
 
 //Check the file
 ~mycsv.size
