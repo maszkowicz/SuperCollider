@@ -8,9 +8,11 @@ Server.default.options.numInputBusChannels=2; //2 is default
 
 // Server Commands
 s.boot;
-s.quit;
 s.scope;
 s.meter;
+
+//if we want to quit (not now...)
+s.quit;
 
 // FIRST STEPS
 // Run the synth and stop it

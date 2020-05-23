@@ -8,7 +8,6 @@
 // https://sonification.de/handbook/
 
 s.boot;
-s.quit;
 
 (
 SynthDef(\sinegrain, {
@@ -61,11 +60,11 @@ p.stop;
 // etc....
 
 //~mycsv is an array of arrays, we need to seperates each "columns" into seperate arrays by extracting it at each line....
-~mycsv_0=Array.fill(~mycsv.size,{arg i;~mycsv.at(i).asArray.at(0)})
-~mycsv_1=Array.fill(~mycsv.size,{arg i;~mycsv.at(i).asArray.at(1)})
-~mycsv_2=Array.fill(~mycsv.size,{arg i;~mycsv.at(i).asArray.at(2)})
-~mycsv_3=Array.fill(~mycsv.size,{arg i;~mycsv.at(i).asArray.at(3)})
-~mycsv_4=Array.fill(~mycsv.size,{arg i;~mycsv.at(i).asArray.at(4)})
+~mycsv_0=Array.fill(~mycsv.size,{arg i;~mycsv.at(i).asArray.at(0)});
+~mycsv_1=Array.fill(~mycsv.size,{arg i;~mycsv.at(i).asArray.at(1)});
+~mycsv_2=Array.fill(~mycsv.size,{arg i;~mycsv.at(i).asArray.at(2)});
+~mycsv_3=Array.fill(~mycsv.size,{arg i;~mycsv.at(i).asArray.at(3)});
+~mycsv_4=Array.fill(~mycsv.size,{arg i;~mycsv.at(i).asArray.at(4)});
 
 // Normalize the data between a max val and min val and match them to sound parameters
 ~freq1=~mycsv_0.normalize(100,1000);

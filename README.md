@@ -16,7 +16,7 @@ Simple octophony from one input sound source.
 # 3. Data Sonification from CSV file
 Simple sonification method for multidimensional data sets.
 # 4. Data Sonfication from web sources, link with Python
-(coming soon)
+Display some data from a real case and send OSC messages with python
 # 5. OSC link with Processing and other softwares
 (coming soon)
 # 6. Binaural rendering and 3D sound
