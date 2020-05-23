@@ -1,0 +1,3 @@
+*.csv linguist-detectable=false
+*.html linguist-detectable=false
+*.scd linguist-detectable=true
