@@ -7,6 +7,7 @@
 // Full book in open access
 // https://sonification.de/handbook/
 
+s.quit
 s.boot;
 
 (
@@ -16,7 +17,7 @@ SynthDef(\sinegrain, {
 	// an amplitude envelope with fixed duration
 	env = EnvGen.ar(Env.perc(attack, decay), doneAction: 2);
 	// the underlying sound
-	sound = FSinOsc.ar(f);
+	sound = FSinOsc.ar(freq);
 	// use the envelope to control sound amplitude:.
 	sound = sound*(env*amp);
 	// add stereo panning
@@ -28,16 +29,16 @@ SynthDef(\sinegrain, {
 
 //test the synth!
 
-p=Synth(\sinegrain,[\out,0,\freq,300,\attack,0,\decay,0.1,\amp,0.3,\dur,0.2]);
+p=Synth(\sinegrain,[\out,0,\freq,200,\attack,0.01,\decay,2,\amp,0.3,\dur,0.2]);
 
 // Run a pattern (\dur is a variable used in Pbind)
 (
 p=Pbind(\instrument, \sinegrain,
-	\freq, Pseq([300,400],inf),
-	\attack, 0.2,
-	\decay, 3,
+	\freq, Pseq([300,400,370,330],1),
+	\attack, 0.1,
+	\decay, 2,
 	\pan, Pseq([-1,1],inf),
-	\dur, 1,
+	\dur, 0.5,
 	\amp, 0.1
 ).play;
 )
@@ -46,7 +47,7 @@ p.stop;
 //Let's grab the Data
 
 //MAC STYLE filepath
-~mycsv=CSVFileReader.readInterpret("Users/Szkomaga/Desktop/SonificationTalk2020/Workshop/3_sonification_data.csv",true,true);
+~mycsv=CSVFileReader.readInterpret("Users/Szkomaga/Documents/SonificationTalk2020/SuperCollider-master/3_sonification_data.csv",true,true);
 
 //Check the file
 ~mycsv.size
@@ -76,12 +77,12 @@ p.stop;
 //test it in the Synth
 (
 p=Pbind(\instrument, \sinegrain,
-	\freq, Pseq(~freq1,inf),
-	\attack, Pseq(~attack1,inf),
-	\decay, Pseq(~decay1,inf),
+	\freq, Pseq(~freq1,1),
+	\attack, Pseq(~attack1,),
+	\decay, Pseq(~decay1,1),
 	\pan, 0,
-	\dur, Pseq(~dur1,inf),
-	\amp, Pseq(~levels1,inf)
+	\dur, Pseq(~dur1,1),
+	\amp, Pseq(~levels1,1)
 ).play;
 )
 p.stop;
@@ -92,13 +93,13 @@ p.stop;
 ~levels1=~mycsv_1.normalize(0.1,1);
 ~attack1=~mycsv_2.normalize(0.01,0.1);
 ~decay1=~mycsv_3.normalize(0.1,0.2);
-~dur1=~mycsv_4.normalize(0.1,0.5);
+~dur1=~mycsv_4.normalize(1,2);
 
 ~freq2=~mycsv_4.normalize(200,5000);
 ~levels2=~mycsv_3.normalize(0.01,0.1);
 ~attack2=~mycsv_0.normalize(0.01,0.1);
 ~decay2=~mycsv_2.normalize(0.1,0.2);
-~dur2=~mycsv_1.normalize(0.1,0.5);
+~dur2=~mycsv_1.normalize(1,2);
 
 (
 p=Ppar([
