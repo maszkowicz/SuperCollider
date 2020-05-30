@@ -6,6 +6,16 @@
 Server.default.options.numOutputBusChannels=4; //2 is default
 Server.default.options.numInputBusChannels=2; //2 is default
 
+// check available devices
+ServerOptions.inDevices
+ServerOptions.outDevices
+
+// manually choose input and output device (usually SuperCollider does it automatically)
+Server.default.options.inDevice="Built-in Microph"
+Server.default.options.outDevice="Built-in Output"
+// Or alternative output device for outputing sound through Zoom videoconferencing service directly
+Server.default.options.outDevice="ZoomAudioD"
+
 // Server Commands
 s.boot;
 s.scope;
