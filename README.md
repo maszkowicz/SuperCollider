@@ -17,7 +17,9 @@ Simple octophony from one input sound source.
 Simple sonification method for multidimensional data sets.
 # 4. Data Sonfication from web sources, link with Python
 Display some data from a real case and send OSC messages with python
-# 5. OSC link with Processing and other softwares
+# 5. Simple MIDI keyboard link with a fun bass Synth
+Display some data from a real case and send OSC messages with python
+# 6. OSC link with Processing and other softwares
 (coming soon)
-# 6. Binaural rendering and 3D sound
+# 7. Binaural rendering and 3D sound
 (coming soon)
