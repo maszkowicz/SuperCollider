@@ -591,7 +591,7 @@ s.freeAll
 ~noise1 = Synth(\Noise_Machine, [\amp,0.1,\ffreq,300,\rq,0.8,\out, ~noisebus])
 ~noise2 = Synth(\Noise_Machine, [\amp,0.1,\ffreq,1000,\rq,0.3,\out, ~noisebus])
 ~sine1 = Synth(\sinewave, [\amp,0.9,\freq,100,\beat,1,\out, ~fxsendbus])
-~effect = Synth(\reverb, [\in, ~fxsendbus, \out, ~sinewavebus], addAction: \addToTail)
+~effect = Synth(\stereoreverb, [\in, ~fxsendbus, \out, ~sinewavebus], addAction: \addToTail)
 ~mixer = Synth(\mixer)
 
 s.freeAll
@@ -605,7 +605,7 @@ s.freeAll
 ~noise1 = Synth(\Noise_Machine, [\amp,0.1,\ffreq,300,\rq,0.8,\out, ~noisebus], ~sourceGroup)
 ~noise2 = Synth(\Noise_Machine, [\amp,0.1,\ffreq,1000,\rq,0.3,\out, ~noisebus], ~sourceGroup)
 ~sine1 = Synth(\sinewave, [\amp,0.9,\freq,100,\beat,1,\out, ~fxsendbus], ~sourceGroup)
-~effect = Synth(\reverb,[\in, ~fxsendbus, \out, ~sinewavebus], ~fxGroup)
+~effect = Synth(\stereoreverb,[\in, ~fxsendbus, \out, ~sinewavebus], ~fxGroup)
 ~mixer = Synth(\mixer, target: ~mixerGroup)
 
 // The interresting thing is that one can apply simultaneous changes in a group
