@@ -18,7 +18,7 @@ Simple sonification method for multidimensional data sets.
 # 4. Data Sonfication from web sources, link with Python
 Display some data from a real case and send OSC messages with python
 # 5. Simple MIDI keyboard link with a fun bass Synth
-Display some data from a real case and send OSC messages with python
+MidiIn and MidiOut with USB connected keyboard
 # 6. OSC link with Processing and other softwares
 (coming soon)
 # 7. Binaural rendering and 3D sound
