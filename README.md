@@ -3,7 +3,7 @@ Supercollider Beginner Workshop
 
 Workshop given in French and English, please contact us for more information and arrangements.
 
-http://ooo.szkmd.ooo/supercollider-workshop/
+https://maszkowicz.art/supercollider-workshop/
 
 This workshop aims to give the first tools to write, create and develop simple sound synthesizers within SuperCollider coding environment that is free and open-source. Few hours will be enough to understand the basic concepts and re-use examples that one can find among SuperCollider’s online community. Prior knowledge of programming is not necessary. Each Participant should bring a computer (Linux, MacOS, Windows) with an installation of the software that can be found on the following page: supercollider.github.io/download.
 
