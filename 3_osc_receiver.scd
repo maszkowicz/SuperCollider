@@ -24,7 +24,7 @@ OSCFunc.trace(false)
 SynthDef(
 	\bip_space,
 	{
-		arg out=0, freq=200, pan=0, pulse=4, depth=1, nbchannels=4;
+		arg out=0, freq=200, pan=0, pulse=4, depth=1;
 		var bippulse=Clip.kr((pulse.abs),4,16);
 		var input = SinOsc.ar(
 			freq: freq,
@@ -35,9 +35,26 @@ SynthDef(
 				width: 0.5,
 				mul: 1.0,
 				add: 0.0).lag(0.1)).lag(0.01);
-		Out.ar(out,PanAz.ar(nbchannels,input,pan,1,depth,0));
+		Out.ar(out,PanAz.ar(6,input,pan,1,depth,0))
 	}
 ).add;
+)
+
+(
+SynthDef(\sinegrain, {
+	|out = 0, attack = 0.01, decay = 0.01, freq=300, pan = 0, amp = 0.5|
+	var sound, env;
+	// an amplitude envelope with fixed duration
+	env = EnvGen.ar(Env.perc(attack, decay), doneAction: 2);
+	// the underlying sound
+	sound = FSinOsc.ar(freq);
+	// use the envelope to control sound amplitude:.
+	sound = sound*(env*amp);
+	// add stereo panning
+	sound = Pan2.ar(sound, pan);
+	// write to output bus
+	Out.ar(out, sound)
+}).add;
 )
 
 ~multichannel_output_bip = Synth(\bip_space,[\out,0,\freq,200,\depth,1,\pulse,4,\nbchannels,4]);//1/2 rate
@@ -69,7 +86,7 @@ SynthDef(
 SynthDef(
 	\Noise_Machine,
 	{
-		arg whichNoise = 0, whichFilter = 0, amp = 0.06, ffreq = 1000, rq = 0.8, out=0, pan=0, depth=4, nbchannels=4;
+		arg whichNoise = 0, whichFilter = 0, amp = 0.06, ffreq = 1000, rq = 0.8, out=0, pan=0, depth=4;
 		var snd;
 		//var windfreq = 900+100*LFNoise1.ar(1,1).lag(0.01);
 		amp = Lag.kr(amp, 1);
@@ -86,7 +103,7 @@ SynthDef(
 			array: [
 				BPF.ar(snd, ffreq, rq),
 				BRF.ar(snd, ffreq, rq)]);
-		Out.ar(out,PanAz.ar(nbchannels,snd,pan,1,depth,0));
+		Out.ar(out,PanAz.ar(6,snd,pan,1,depth,0))
 	}
 ).add;
 )
@@ -104,7 +121,6 @@ SynthDef(
 		msg.postln
 	},'/m5xyz',nil);
 ~m5xyz.free
-
 
 
 

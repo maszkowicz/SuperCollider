@@ -15,8 +15,11 @@ ServerOptions.inDevices
 ServerOptions.outDevices
 
 // manually choose input and output device (usually SuperCollider does it automatically)
-Server.default.options.inDevice="Built-in Microph"
-Server.default.options.outDevice="Built-in Output"
+Server.default.options.inDevice="MacBook Pro Microphone"
+Server.default.options.outDevice="SQ - Audio"
+
+Server.default.options.numOutputBusChannels=6;
+Server.default.options.numInputBusChannels=1;
 
 // Server Commands (one can aslo find them in "Server" menu or with keyboard shortcuts)
 s.boot // boots the server
@@ -73,7 +76,11 @@ s.scope
 // Here we use cmd + enter for evaluating both line at a time, note the appearance of ";" for separating the two lines and the braquets for saying they are executed at the same time
 (
 {SinOsc.ar(freq: 400, mul: 0.1)}.play(outbus: 0);
-{SinOsc.ar(freq: 401, mul: 0.1)}.play(outbus: 1)
+{SinOsc.ar(freq: 401, mul: 0.1)}.play(outbus: 1);
+{SinOsc.ar(freq: 402, mul: 0.1)}.play(outbus: 2);
+{SinOsc.ar(freq: 403, mul: 0.1)}.play(outbus: 3);
+{SinOsc.ar(freq: 404, mul: 0.1)}.play(outbus: 4);
+{SinOsc.ar(freq: 405, mul: 0.1)}.play(outbus: 5)
 )
 
 //Same as using an array of generators:
