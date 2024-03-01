@@ -9,17 +9,18 @@ This workshop aims to give the first tools to write, create and develop simple s
 
 Chapters and Code examples
 
-# 1. Introduction to SuperCollider environment
-First Synths, parameter manipulation, code re-use.
-# 2. Simple Spatialisation
-Simple octophony from one input sound source.
-# 3. Data Sonification from CSV file
+# 0. Introduction to SuperCollider environment
+First Sounds and Synths, Variables and Buses, Simple Patterns, code re-use.
+# 1. Simple CSV Sonification
 Simple sonification method for multidimensional data sets.
+# 2. Simple Spatialisation
+Multichannel expansion to octophony from one input sound source.
+# 3. OSC Receiver
+link with Wi-fi connected Hardware
 # 4. Data Sonfication from web sources, link with Python
 Display some data from a real case and send OSC messages with python
-# 5. Simple MIDI keyboard link with a fun bass Synth
+# 5. Binaural Azimut panner, OSC link with Processing and other softwares
+(coming soon)
+# 6. Simple MIDI keyboard link with a fun bass Synth
 MidiIn and MidiOut with USB connected keyboard
-# 6. OSC link with Processing and other softwares
-(coming soon)
-# 7. Binaural rendering and 3D sound
-(coming soon)
+
