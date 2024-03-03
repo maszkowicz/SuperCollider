@@ -15,10 +15,10 @@ ServerOptions.inDevices
 ServerOptions.outDevices
 
 // manually choose input and output device (usually SuperCollider does it automatically)
-Server.default.options.inDevice="MacBook Pro Microphone"
-Server.default.options.outDevice="SQ - Audio"
+Server.default.options.inDevice_("Built-in Microph");
+Server.default.options.outDevice_("Built-in Output");
 
-Server.default.options.numOutputBusChannels=6;
+Server.default.options.numOutputBusChannels=2;
 Server.default.options.numInputBusChannels=1;
 
 // Server Commands (one can aslo find them in "Server" menu or with keyboard shortcuts)
