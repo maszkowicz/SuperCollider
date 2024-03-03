@@ -40,23 +40,6 @@ SynthDef(
 ).add;
 )
 
-(
-SynthDef(\sinegrain, {
-	|out = 0, attack = 0.01, decay = 0.01, freq=300, pan = 0, amp = 0.5|
-	var sound, env;
-	// an amplitude envelope with fixed duration
-	env = EnvGen.ar(Env.perc(attack, decay), doneAction: 2);
-	// the underlying sound
-	sound = FSinOsc.ar(freq);
-	// use the envelope to control sound amplitude:.
-	sound = sound*(env*amp);
-	// add stereo panning
-	sound = Pan2.ar(sound, pan);
-	// write to output bus
-	Out.ar(out, sound)
-}).add;
-)
-
 ~multichannel_output_bip = Synth(\bip_space,[\out,0,\freq,200,\depth,1,\pulse,4,\nbchannels,4]);//1/2 rate
 ~multichannel_output_bip.free;
 
