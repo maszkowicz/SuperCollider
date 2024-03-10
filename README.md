@@ -19,7 +19,7 @@ Multichannel expansion to octophony from one input sound source.
 link with Wi-fi connected Hardware
 # 4. Data Sonfication from web sources, link with Python
 Display some data from a real case and send OSC messages with python
-# 5. Binaural Azimut panner, OSC link with Processing and other softwares
+# 5. Binaural Azimuth panner, OSC link with Processing and other softwares
 (coming soon)
 # 6. Simple MIDI keyboard link with a fun bass Synth
 MidiIn and MidiOut with USB connected keyboard
