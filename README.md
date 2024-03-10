@@ -16,11 +16,13 @@ Simple sonification method for multidimensional data sets.
 # 2. Simple Spatialisation
 Multichannel expansion to octophony from one input sound source.
 # 3. OSC Receiver
-link with Wi-fi connected Hardware
+Link with local software for interfaces.
 # 4. Data Sonfication from web sources, link with Python
 Display some data from a real case and send OSC messages with python
-# 5. Binaural Azimuth panner, OSC link with Processing and other softwares
+# 5. OSC link with Wi-Fi connected hardware
 (coming soon)
-# 6. Simple MIDI keyboard link with a fun bass Synth
-MidiIn and MidiOut with USB connected keyboard
+# 6. Binaural Azimuth panner and 3D sound
+(coming soon)
+# 7. Simple MIDI keyboard link with a fun bass Synth
+MidiIn and MidiOut with USB connected keyboard or controller.
 
