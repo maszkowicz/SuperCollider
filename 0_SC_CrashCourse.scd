@@ -15,11 +15,11 @@ ServerOptions.inDevices
 ServerOptions.outDevices
 
 // manually choose input and output device (usually SuperCollider does it automatically)
-Server.default.options.inDevice_("Built-in Microph");
-Server.default.options.outDevice_("Built-in Output");
+Server.default.options.inDevice="Built-in Microph"
+Server.default.options.outDevice="Built-in Output"
 
-Server.default.options.numOutputBusChannels=2;
-Server.default.options.numInputBusChannels=1;
+Server.default.options.numOutputBusChannels=4;
+Server.default.options.numInputBusChannels=2;
 
 // Server Commands (one can aslo find them in "Server" menu or with keyboard shortcuts)
 s.boot // boots the server
@@ -34,8 +34,8 @@ s.quit
 // FIRST STEPS
 // Evaluate the following function and stop it (shift+enter or cmd+enter)
 // Here the most simple function ever (click on function then cmd+D for help)
-// to stop you can use cmd+-
-{SinOsc.ar(440,0,0.1,0)}.play
+// to stop you can use cmd+.
+{SinOsc.ar(374,0,0.1,0)}.play
 //This is equivalent
 {SinOsc.ar(440, mul: 0.1)}.play
 //This is aswell
@@ -61,26 +61,24 @@ s.scope
 //Use control rate ugens as modulators, that is, as signals that shape an audio signal.
 
 // try the control rate try 440Hz and 44Hz, what happens? read more about Niquist frequency and alliazing
-{SinOsc.kr(freq: 44, mul: 0.1)}.scope
+{SinOsc.kr(freq: 440, mul: 0.1)}.scope
 
 // Let's play sounds again
 
 // It's a mono signal, we want it stereo right? .dup means duplication from mono to stereo
 {SinOsc.ar(freq: 440, mul: 0.1).dup}.play
 // This also works
-{SinOsc.ar(freq: 440, mul: 0.1).dup(2)}.play
+{SinOsc.ar(freq: 440, mul: 0.1).dup(4)}.play
 // That as well, choose your favourite
-{SinOsc.ar(freq: 440, mul: 0.1)!2}.play
+{SinOsc.ar(freq: 440, mul: 0.1)!4}.play
 
 // What about playing with frequencies in each channnel?
 // Here we use cmd + enter for evaluating both line at a time, note the appearance of ";" for separating the two lines and the braquets for saying they are executed at the same time
 (
 {SinOsc.ar(freq: 400, mul: 0.1)}.play(outbus: 0);
-{SinOsc.ar(freq: 401, mul: 0.1)}.play(outbus: 1);
+{SinOsc.ar(freq: 404, mul: 0.1)}.play(outbus: 1);
 {SinOsc.ar(freq: 402, mul: 0.1)}.play(outbus: 2);
-{SinOsc.ar(freq: 403, mul: 0.1)}.play(outbus: 3);
-{SinOsc.ar(freq: 404, mul: 0.1)}.play(outbus: 4);
-{SinOsc.ar(freq: 405, mul: 0.1)}.play(outbus: 5)
+{SinOsc.ar(freq: 403, mul: 0.1)}.play(outbus: 3)
 )
 
 //Same as using an array of generators:
@@ -88,7 +86,7 @@ s.scope
 
 // This way implicitely assumes we have a two channels generator
 // multichannel expansion is THE BIG plus of SuperCollider over all others
-{SinOsc.ar(freq: [440, 441], mul: 0.1)}.play
+{SinOsc.ar(freq: [440, 441, 442, 443], mul: 0.1)}.play
 
 // This way allows different amplitudes
 {SinOsc.ar(freq: [440, 500], mul: [0.02, 0.2])}.play
@@ -102,12 +100,16 @@ s.scope
 // NOW WE WANT MORE SOUND SOURCES
 // Use of a global variable such as 'a','b','c',.... warning, some letters such a 's' are reserved by the system
 // Play with a and b, evaluate them separately, free them whenever...
-// warning if you run twice a function named with the same variable, the new pointer will replace the first one, so it will get out of control, only chance to switch it OFF is to switch everything OFF with cmd+-.
-a={SinOsc.ar(freq: 200, mul: 0.1).dup}.play
-b={SinOsc.ar(freq: 300, mul: 0.1).dup}.play
+// warning if you run twice a function named with the same variable, the new pointer will replace the first one, so it will get out of control, only chance to switch it OFF is to switch everything OFF with cmd+.
+a={SinOsc.ar(freq: [200,201], mul: 0.1)}.play
+b={SinOsc.ar(freq: [300,301], mul: 0.1)}.play
+c={SinOsc.ar(freq: [300,301], mul: 0.1)}.play
 // for releasing them
 a.free
 b.free
+c.free
+
+// Let's play the previous examples with various frequencies and watch them on the Scope on X/Y mode, you will see that if left and right channel are slightely different, a nice looking figures will appear
 
 // another way naming global variables with more than one letter is using '~'
 ~sine1={SinOsc.ar(freq: 440, mul: 0.1).dup}.play
@@ -115,22 +117,22 @@ b.free
 ~sine1.free
 
 // ON and OFF are a bit Harsh, let's add some fade IN and fade OUT. Here 1 second, and play with different sounds
-~sine1={SinOsc.ar(freq: 440, mul: 0.1).dup}.play(fadeTime: 1.0)
-~sine2={SinOsc.ar(freq: 445, mul: 0.1).dup}.play(fadeTime: 1.0)
-~sine3={SinOsc.ar(freq: 432, mul: 0.1).dup}.play(fadeTime: 1.0)
-~sine4={SinOsc.ar(freq: 441, mul: 0.1).dup}.play(fadeTime: 1.0)
+~sine1={SinOsc.ar(freq: 440, mul: 0.1).dup(6)}.play(fadeTime: 1.0);
+~sine2={SinOsc.ar(freq: 445, mul: 0.1).dup(6)}.play(fadeTime: 1.0);
+~sine3={SinOsc.ar(freq: 432, mul: 0.1).dup(6)}.play(fadeTime: 1.0);
+~sine4={SinOsc.ar(freq: 441, mul: 0.1).dup(6)}.play(fadeTime: 1.0)
 // For releasing them
 ~sine1.release(1.0)
 ~sine2.release(1.0)
 ~sine3.release(1.0)
 ~sine4.release(1.0)
-
+"/Users/szkomaga/Desktop/drafts.rtf"
 // Let's record the output, press recorder on, play the sound, press stop
 //numChannels is optionnal, default is 2, but sky is the limit.
 // Type standadizePath in MacOSX for finding your home directory
 "~/".standardizePath
 
-s.record(path: "~/Desktop/test_recording.wav".standardizePath, numChannels: 2)
+s.record(path: "/Users/szkomaga/Desktop/testfile.aiff".standardizePath, numChannels: 4)
 // Stop Recording (don't forget it....)
 s.stopRecording
 
@@ -154,7 +156,7 @@ a={SinOsc.ar(
 	add: 0).dup}.play
 )
 // For releasing it
-a.free
+a.free£
 
 // Same same but using a local variable
 // Note the use of ";" of reparating lines
@@ -221,7 +223,7 @@ a.release(1)
 a={
 	Pan2.ar(
 		in: SinOsc.ar(
-			freq: 300,
+			freq: 300, //this is the frequency that I will hear
 			mul: 0.1),
 		pos: MouseX.kr(
 			minval: -1,
@@ -451,16 +453,17 @@ SynthDef(
 		var snd, outsignal;
 		snd = BrownNoise.ar(amp);
 		snd = BPF.ar(snd, ffreq, rq);
-		outsignal = Pan2.ar(
-				in:snd,
-				pos:LFNoise1.ar(1, 0.7),
+		outsignal = PanAz.ar(
+				numChans:6,
+			    in:snd,
+				pos:LFNoise1.ar(1, 1),
 				level:1);
 		Out.ar(out, outsignal)}).add
 )
 
 // Run the line one after the other and understand what we do
 ~noise1 = Synth(\Noise_Machine,[\amp,0.1,\ffreq,300,\rq,0.8])
-~noise1.set(\ffreq,200)
+~noise1.set(\ffreq,400)
 ~noise1.set(\rq,0.1)
 ~noise2 = Synth(\Noise_Machine,[\amp,0.1,\ffreq,1000,\rq,0.3])
 ~noise1.set(\rq,0.5)
